@@ -1,0 +1,48 @@
+body{
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    color: rgb(168, 240, 74);
+}
+
+#description{
+    display: block;
+    border: 2px solid white;
+    width: 80vw;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid rgb(168, 240, 74) ;
+}
+
+#commands{
+    display: block;
+    margin:auto;
+    background-color: inherit;
+    margin-top: 2em;
+    padding: 5px;
+    font-family: inherit;
+    color:inherit;
+    border: 2px solid rgb(168, 240, 74);
+}
+label{
+    display: block;
+    width: 80vw;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+button{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: 20px;
+    padding: 10px;
+    border: 2px solid rgb(168, 240, 74) ;
+    border-radius: 20px;
+
+
+}
