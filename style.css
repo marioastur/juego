@@ -1,30 +1,31 @@
-body{
+body {
     background-color: black;
     color: white;
     font-family: monospace;
     color: rgb(168, 240, 74);
 }
 
-#description{
+#description {
     display: block;
     border: 2px solid white;
     width: 80vw;
     margin: auto;
     padding: 20px;
-    border: 2px solid rgb(168, 240, 74) ;
+    border: 2px solid rgb(168, 240, 74);
 }
 
-#commands{
+#commands {
     display: block;
-    margin:auto;
+    margin: auto;
     background-color: inherit;
     margin-top: 2em;
     padding: 5px;
     font-family: inherit;
-    color:inherit;
+    color: inherit;
     border: 2px solid rgb(168, 240, 74);
 }
-label{
+
+label {
     display: block;
     width: 80vw;
     margin: auto;
@@ -32,7 +33,7 @@ label{
     padding: 20px;
 }
 
-button{
+#do {
     display: block;
     margin: auto;
     margin-top: 10px;
@@ -41,8 +42,11 @@ button{
     font-family: inherit;
     font-size: 20px;
     padding: 10px;
-    border: 2px solid rgb(168, 240, 74) ;
+    border: 2px solid rgb(168, 240, 74);
     border-radius: 20px;
+}
 
-
+#do:hover {
+    background-color: rgb(168, 240, 74);
+    color: black;
 }
