@@ -1,15 +1,67 @@
-//Creamos la función separateWord
-function separateWord(words) {
-    let word = words.split(' ')
-    return word
+let gameVerbs = new Map([
+    ['ir', true],
+    ['coger', true],
+    ['usar', true],
+    ['ver', true],
+    ['hablar', true]
+])
+
+let textDescription = new String
+
+
+const orderButton = document.getElementById('do')
+orderButton.onclick = function() {
+
+    let command = document.getElementById('commands').value
+    let verbArray = separateWords(command.toLowerCase())
+    let getVerb = isGameVerbs(verbArray[0])
+    if (getVerb == false) {
+        printDescription('Orden no válida. Use ir,coger,usar,ver,hablar')
+    } else {
+        printDescription(gameAccions(verbArray[0]))
+    }
 }
 
-//Definimos dos strings
-let firstMessage = "ir norte"
-let secondMessage = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex dicta, exercitationem cum, placeat assumenda molestiae tenetur natus corrupti commodi modi, ipsam ratione error dolor iure recusandae? In dolores atque sunt?"
+
+function printDescription(text) {
+    let today = new Date()
+    timeZone = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() + ' - '
+    textDescription = timeZone + ' ' + text + '<br>' + textDescription
+    document.getElementById('description').innerHTML = textDescription
+}
 
 
-//Llamar a la función y pasar parámetros
-//console.log(separateWord(firstMessage))
+function gameAccions(verbGame) {
+    switch (verbGame) {
+        case 'ir':
+            return '¿Dónde quieres ir?'
+            break;
+        case 'coger':
+            return '¿Qué quieres coger?'
+            break;
+        case 'usar':
+            return '¿Qué quieres usar?'
+            break;
+        case 'ver':
+            return '¿Qué quieres ver?'
+            break;
+        case 'hablar':
+            return '¿Qué quieres decir?'
+            break;
+        default:
+            break;
+    }
+}
 
-console.log(separateWord(secondMessage)[20])
+
+function separateWords(words) {
+    return words.split(' ')
+}
+
+
+function isGameVerbs(verbArray) {
+    if (gameVerbs.has(verbArray)) {
+        return true
+    }
+    return false
+}

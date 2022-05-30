@@ -1,7 +1,7 @@
 body {
     background-color: black;
     color: white;
-    font-family: monospace;
+    font-family: 'Courier New', Courier, monospace;
     color: rgb(168, 240, 74);
 }
 
@@ -9,9 +9,12 @@ body {
     display: block;
     border: 2px solid white;
     width: 80vw;
+    height: 100px;
     margin: auto;
     padding: 20px;
     border: 2px solid rgb(168, 240, 74);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #commands {
