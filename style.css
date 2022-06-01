@@ -1,7 +1,15 @@
+@font-face {
+    font-family: 'Dogica';
+    src: url('asset/dogica.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+  }
+
+
 body {
     background-color: black;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Dogica;
     color: rgb(168, 240, 74);
 }
 
@@ -16,6 +24,7 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
 
 #commands {
     display: block;

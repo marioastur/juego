@@ -3,7 +3,7 @@ const gameVerbs = createVerbs()
 let textDescription = new String
 
 // INICIO DE JUEGO
-let player = { position: [1, 2] }
+let player = { position: [0, 0] }
 positionPlayer(player.position[0], player.position[1])
 
 
@@ -30,7 +30,8 @@ function eventGame() {
 function printDescription(text) {
     let today = new Date()
     timeZone = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() + ' - '
-    textDescription = timeZone + ' ' + text + '<br>' + textDescription
+    
+    textDescription = timeZone + ' ' + '> ' + text + '<br>' + textDescription
     document.getElementById('description').innerHTML = textDescription
 }
 
@@ -79,34 +80,34 @@ function gameAccions(verbGame) {
 }
 
 function createMap() {
-    const miSala = [
+    const gameRooms = [
         [0, 1, 2, 3],
         [0, 1, 2, 3],
         [0, 1, 2, 3],
         [0, 1, 2, 3]
     ]
 
-    miSala[0][0] = { description: 'Descripción Sala 00', exits: ['N'] }
-    miSala[0][1] = { description: 'Descripción Sala 01', exits: ['E', 'W'] }
-    miSala[0][2] = { description: 'Descripción Sala 02', exits: ['N', 'E', 'W'] }
-    miSala[0][3] = { description: 'Descripción Sala 03', exits: ['E'] }
+    gameRooms[0][0] = { description: 'Descripción Sala 00', exits: ['N'] }
+    gameRooms[0][1] = { description: 'Descripción Sala 01', exits: ['E', 'W'] }
+    gameRooms[0][2] = { description: 'Descripción Sala 02', exits: ['N', 'E', 'W'] }
+    gameRooms[0][3] = { description: 'Descripción Sala 03', exits: ['E'] }
 
-    miSala[1][0] = { description: 'Descripción Sala 10', exits: ['N', 'S'] }
-    miSala[1][1] = { description: 'Descripción Sala 11', exits: [''] }
-    miSala[1][2] = { description: 'Descripción Sala 12', exits: ['S', 'E'] }
-    miSala[1][3] = { description: 'Descripción Sala 13', exits: ['N', 'W'] }
+    gameRooms[1][0] = { description: 'Descripción Sala 10', exits: ['N', 'S'] }
+    gameRooms[1][1] = { description: 'Descripción Sala 11', exits: [''] }
+    gameRooms[1][2] = { description: 'Descripción Sala 12', exits: ['S', 'E'] }
+    gameRooms[1][3] = { description: 'Descripción Sala 13', exits: ['N', 'W'] }
 
-    miSala[2][0] = { description: 'Descripción Sala 20', exits: ['S', 'E'] }
-    miSala[2][1] = { description: 'Descripción Sala 21', exits: ['E', 'W'] }
-    miSala[2][2] = { description: 'Descripción Sala 22', exits: ['N', 'E', 'W'] }
-    miSala[2][3] = { description: 'Descripción Sala 23', exits: ['N', 'W'] }
+    gameRooms[2][0] = { description: 'Descripción Sala 20', exits: ['S', 'E'] }
+    gameRooms[2][1] = { description: 'Descripción Sala 21', exits: ['E', 'W'] }
+    gameRooms[2][2] = { description: 'Descripción Sala 22', exits: ['N', 'E', 'W'] }
+    gameRooms[2][3] = { description: 'Descripción Sala 23', exits: ['N', 'W'] }
 
-    miSala[3][0] = { description: 'Descripción Sala 30', exits: ['E'] }
-    miSala[3][1] = { description: 'Descripción Sala 31', exits: ['E', 'W'] }
-    miSala[3][2] = { description: 'Descripción Sala 32', exits: ['S', 'E', 'W'] }
-    miSala[3][3] = { description: 'Descripción Sala 33', exits: ['S', 'W'] }
+    gameRooms[3][0] = { description: 'Descripción Sala 30', exits: ['E'] }
+    gameRooms[3][1] = { description: 'Descripción Sala 31', exits: ['E', 'W'] }
+    gameRooms[3][2] = { description: 'Descripción Sala 32', exits: ['S', 'E', 'W'] }
+    gameRooms[3][3] = { description: 'Descripción Sala 33', exits: ['S', 'W'] }
 
-    return miSala
+    return gameRooms
 }
 
 function positionPlayer(x, y) {
