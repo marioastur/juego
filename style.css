@@ -1,15 +1,7 @@
-@font-face {
-    font-family: 'Dogica';
-    src: url('asset/dogica.ttf') format('truetype');
-    font-style: normal;
-    font-weight: normal;
-  }
-
-
 body {
     background-color: black;
     color: white;
-    font-family: Dogica;
+    font-family: 'Courier New', Courier, monospace;
     color: rgb(168, 240, 74);
 }
 
@@ -17,7 +9,7 @@ body {
     display: block;
     border: 2px solid white;
     width: 80vw;
-    height: 100px;
+    height: 200px;
     margin: auto;
     padding: 20px;
     border: 2px solid rgb(168, 240, 74);
@@ -25,6 +17,18 @@ body {
     overflow-x: hidden;
 }
 
+#description::-webkit-scrollbar {
+    width: 12px;
+}
+
+#description::-webkit-scrollbar-track {
+    background-color: rgb(168, 240, 74);
+}
+
+#description::-webkit-scrollbar-thumb {
+    background-color: green;
+    border-radius: 20px;
+}
 
 #commands {
     display: block;
@@ -61,4 +65,8 @@ label {
 #do:hover {
     background-color: rgb(168, 240, 74);
     color: black;
+}
+
+.error {
+    color: red;
 }
