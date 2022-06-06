@@ -5,8 +5,8 @@ const gameMessage = createMessage
 let textDescription = new String
 
 // INICIO DE JUEGO
-let player = { position: [0, 0] }
-printDescription(gameMessage().get('welcome'))
+let player = { position: [0, 0] ,objetcs:[]}
+printDescriptionBox(gameMessage().get('welcome'))
 positionPlayer(player.position[0], player.position[1])
 
 
@@ -21,36 +21,45 @@ orderButton.onclick = eventGame
 //#############################################
 
 function positionPlayer(x, y) {
-    printDescription(gameMap()[x][y].description)
+    printDescriptionBox(gameMap()[x][y].description)
 }
 
-function printDescription(text) {
+
+function printDescriptionBox(text) {
     let today = new Date()
-    timeZone = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() + ' - '
-    textDescription = timeZone + ' ' + '> ' + text + '<br>' + textDescription
+    timeZone = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() + ' -'
+    textDescription = timeZone + '> ' + text + '<br>' + textDescription
     document.getElementById('description').innerHTML = textDescription
 }
 
+
 function eventGame() {
-    let command = document.getElementById('commands').value
-    if (command === '') {
-        printDescription(gameMessage().get('separate'))
+
+    let initialPlayerOrder = document.getElementById('commands').value.trim()
+  
+    if (initialPlayerOrder === '') {
+        printDescriptionBox(gameMessage().get('separate'))
         positionPlayer(player.position[0], player.position[1])
-        printDescription(gameMessage().get('noWord'))
-    } else {
+        printDescriptionBox(gameMessage().get('noWord'))
+        return
+    }
 
-        let verbArray = command.toLowerCase().split(' ')
+    let playerOrderArray = initialPlayerOrder.toLowerCase().split(' ')
 
-        if (gameVerbs().has(verbArray[0])) {
-            console.log('Segimos jugando')
-        } else {
-            console.log('verbo mal')
-            printDescription(gameMessage().get('noVerb'))
-        }
+    if (!playerOrderArray[1]) {
+        printDescriptionBox(gameMessage().get('noWord'))
+        return
+    }
 
-        if (!verbArray[1]) {
-            printDescription(gameMessage().get('noWord'))
-        }
+    if (!gameVerbs().has(playerOrderArray[0])) {
+        printDescriptionBox(gameMessage().get('noVerb'))
+        return
+    }
+
+    let exitsRoomArray = gameMap()[player.position[0]][player.position[1]].exits
+
+    if (exitsRoomArray.includes(playerOrderArray[1])) {
+        movePlayer(playerOrderArray[1])
     }
 }
 
@@ -59,32 +68,25 @@ function eventGame() {
 //#############################################
 function movePlayer(dir) {
     let actualPosition = player.position
-    switch (dir) {
-        case 'n':
-            actualPosition[0]++
-                positionPlayer(actualPosition[0], actualPosition[1])
-            break;
-        case 's':
-            actualPosition[0]--
-                positionPlayer(actualPosition[0], actualPosition[1])
-            break;
-        case 'e':
-            actualPosition[1]++
-                positionPlayer(actualPosition[0], actualPosition[1])
-            break;
-        case 'w':
-            actualPosition[1]--
-                positionPlayer(actualPosition[0], actualPosition[1])
-            break;
-        case 'z':
-            positionPlayer(1, 1)
-            break;
-        default:
-            break;
+    if (dir==='n') {
+        actualPosition[1]++
     }
+    if (dir==='s') {
+        actualPosition[1]--
+    }
+    if (dir==='e') {
+        actualPosition[0]++
+    }
+    if (dir==='w') {
+        actualPosition[0]--
+    }
+    if (dir==='z') {
+        positionPlayer(1, 1)
+        return
+    }
+    positionPlayer(actualPosition[0], actualPosition[1])
+    return
 }
-
-
 
 function takeObject(dir) {
     console.log('Coger objeto')
@@ -103,8 +105,6 @@ function speakPlayer(dir) {
 }
 
 
-
-
 //#############################################
 //############  MAPAS Y ARRAYS     ############
 //#############################################
@@ -115,22 +115,22 @@ function createMap() {
         [],
         []
     ]
-    gameRooms[0][0] = { description: 'Descripción Sala 00', exits: ['N'] }
-    gameRooms[0][1] = { description: 'Descripción Sala 01', exits: ['E', 'W'] }
-    gameRooms[0][2] = { description: 'Descripción Sala 02', exits: ['N', 'E', 'W'] }
-    gameRooms[0][3] = { description: 'Descripción Sala 03', exits: ['E'] }
-    gameRooms[1][0] = { description: 'Descripción Sala 10', exits: ['N', 'S'] }
-    gameRooms[1][1] = { description: 'Descripción Sala 11', exits: ['Z'] }
-    gameRooms[1][2] = { description: 'Descripción Sala 12', exits: ['S', 'E'] }
-    gameRooms[1][3] = { description: 'Descripción Sala 13', exits: ['N', 'W'] }
-    gameRooms[2][0] = { description: 'Descripción Sala 20', exits: ['S', 'E'] }
-    gameRooms[2][1] = { description: 'Descripción Sala 21', exits: ['E', 'W'] }
-    gameRooms[2][2] = { description: 'Descripción Sala 22', exits: ['N', 'E', 'W'] }
-    gameRooms[2][3] = { description: 'Descripción Sala 23', exits: ['N', 'W'] }
-    gameRooms[3][0] = { description: 'Descripción Sala 30', exits: ['E'] }
-    gameRooms[3][1] = { description: 'Descripción Sala 31', exits: ['E', 'W'] }
-    gameRooms[3][2] = { description: 'Descripción Sala 32', exits: ['S', 'E', 'W'] }
-    gameRooms[3][3] = { description: 'Descripción Sala 33', exits: ['S', 'W'] }
+    gameRooms[0][0] = { description: 'Descripción Sala 00', exits: ['n'] }
+    gameRooms[0][1] = { description: 'Descripción Sala 01', exits: ['n', 's'] }
+    gameRooms[0][2] = { description: 'Descripción Sala 02', exits: ['s', 'e'] }
+    gameRooms[0][3] = { description: 'Descripción Sala 03', exits: ['e','z'] }
+    gameRooms[1][0] = { description: 'Descripción Sala 10', exits: ['e'] }
+    gameRooms[1][1] = { description: 'Descripción sala 11', exits: ['z'] }
+    gameRooms[1][2] = { description: 'Descripción sala 12', exits: ['e', 'w'] }
+    gameRooms[1][3] = { description: 'Descripción sala 13', exits: ['e', 'w'] }
+    gameRooms[2][0] = { description: 'Descripción sala 20', exits: ['n', 'e', 'w'] }
+    gameRooms[2][1] = { description: 'Descripción sala 21', exits: ['s'] }
+    gameRooms[2][2] = { description: 'Descripción sala 22', exits: ['e', 'w'] }
+    gameRooms[2][3] = { description: 'Descripción sala 23', exits: ['e', 'w'] }
+    gameRooms[3][0] = { description: 'Descripción sala 30', exits: ['n' ,'w'] }
+    gameRooms[3][1] = { description: 'Descripción sala 31', exits: ['n', 's'] }
+    gameRooms[3][2] = { description: 'Descripción sala 32', exits: ['n', 's', 'w'] }
+    gameRooms[3][3] = { description: 'Descripción sala 33', exits: ['s', 'w'] }
     return gameRooms
 }
 
@@ -148,7 +148,7 @@ function createMessage() {
     const messages = new Map
     messages.set('welcome', '<strong>Bienvenido al juego</strong>')
     messages.set('noMove', 'No se puede mover en esa dirección')
-    messages.set('noWord', '¿Que quieres hacer?')
+    messages.set('noWord', 'No puedo entenderte. ¿Que quieres hacer?')
     messages.set('noVerb', '<span class="error">No puedo entender esa orden.</span>')
     messages.set('separate', '------------------')
     return messages
