@@ -5,7 +5,7 @@ const gameMessage = createMessage
 let textDescription = new String
 
 // INICIO DE JUEGO
-let player = { position: [0, 0] ,objetcs:[]}
+let player = { position: [0, 0], objetcs: [] }
 printDescriptionBox(gameMessage().get('welcome'))
 positionPlayer(player.position[0], player.position[1])
 
@@ -36,7 +36,7 @@ function printDescriptionBox(text) {
 function eventGame() {
 
     let initialPlayerOrder = document.getElementById('commands').value.trim()
-  
+
     if (initialPlayerOrder === '') {
         printDescriptionBox(gameMessage().get('separate'))
         positionPlayer(player.position[0], player.position[1])
@@ -68,19 +68,19 @@ function eventGame() {
 //#############################################
 function movePlayer(dir) {
     let actualPosition = player.position
-    if (dir==='n') {
+    if (dir === 'n') {
         actualPosition[1]++
     }
-    if (dir==='s') {
+    if (dir === 's') {
         actualPosition[1]--
     }
-    if (dir==='e') {
+    if (dir === 'e') {
         actualPosition[0]++
     }
-    if (dir==='w') {
+    if (dir === 'w') {
         actualPosition[0]--
     }
-    if (dir==='z') {
+    if (dir === 'z') {
         positionPlayer(1, 1)
         return
     }
@@ -93,7 +93,7 @@ function takeObject(dir) {
 }
 
 function useObject(dir) {
-    return 'Usar objeto'
+    console.log('Usar objeto')
 }
 
 function whatchObject(dir) {
@@ -118,7 +118,7 @@ function createMap() {
     gameRooms[0][0] = { description: 'Descripción Sala 00', exits: ['n'] }
     gameRooms[0][1] = { description: 'Descripción Sala 01', exits: ['n', 's'] }
     gameRooms[0][2] = { description: 'Descripción Sala 02', exits: ['s', 'e'] }
-    gameRooms[0][3] = { description: 'Descripción Sala 03', exits: ['e','z'] }
+    gameRooms[0][3] = { description: 'Descripción Sala 03', exits: ['e', 'z'] }
     gameRooms[1][0] = { description: 'Descripción Sala 10', exits: ['e'] }
     gameRooms[1][1] = { description: 'Descripción sala 11', exits: ['z'] }
     gameRooms[1][2] = { description: 'Descripción sala 12', exits: ['e', 'w'] }
@@ -127,7 +127,7 @@ function createMap() {
     gameRooms[2][1] = { description: 'Descripción sala 21', exits: ['s'] }
     gameRooms[2][2] = { description: 'Descripción sala 22', exits: ['e', 'w'] }
     gameRooms[2][3] = { description: 'Descripción sala 23', exits: ['e', 'w'] }
-    gameRooms[3][0] = { description: 'Descripción sala 30', exits: ['n' ,'w'] }
+    gameRooms[3][0] = { description: 'Descripción sala 30', exits: ['n', 'w'] }
     gameRooms[3][1] = { description: 'Descripción sala 31', exits: ['n', 's'] }
     gameRooms[3][2] = { description: 'Descripción sala 32', exits: ['n', 's', 'w'] }
     gameRooms[3][3] = { description: 'Descripción sala 33', exits: ['s', 'w'] }

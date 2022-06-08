@@ -2,17 +2,27 @@ body {
     background-color: black;
     color: white;
     font-family: 'Courier New', Courier, monospace;
-    color: rgb(168, 240, 74);
+    color: #52b552;
+}
+
+picture {
+    margin: auto;
+}
+
+picture img {
+    display: block;
+    margin: auto;
+    width: 800px;
 }
 
 #description {
     display: block;
     border: 2px solid white;
-    width: 80vw;
+    width: 800px;
     height: 200px;
     margin: auto;
     padding: 20px;
-    border: 2px solid rgb(168, 240, 74);
+    border: 2px solid #52b552;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -22,7 +32,7 @@ body {
 }
 
 #description::-webkit-scrollbar-track {
-    background-color: rgb(168, 240, 74);
+    background-color: #52b552;
 }
 
 #description::-webkit-scrollbar-thumb {
@@ -38,7 +48,7 @@ body {
     padding: 5px;
     font-family: inherit;
     color: inherit;
-    border: 2px solid rgb(168, 240, 74);
+    border: 2px solid #52b552;
 }
 
 label {
@@ -58,12 +68,12 @@ label {
     font-family: inherit;
     font-size: 20px;
     padding: 10px;
-    border: 2px solid rgb(168, 240, 74);
+    border: 2px solid #52b552;
     border-radius: 20px;
 }
 
 #do:hover {
-    background-color: rgb(168, 240, 74);
+    background-color: #52b552;
     color: black;
 }
 

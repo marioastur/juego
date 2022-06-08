@@ -5,7 +5,7 @@ let roomDescription = {
     }
 }
 
-console.log(roomDescription['sala0']['descripcion'])
+console.log(roomDescription.sala0.descripcion)
 console.log(roomDescription['sala0']['objeto'])
 
 // Matriz de salas
